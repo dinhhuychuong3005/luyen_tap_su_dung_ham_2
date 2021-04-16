@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let giai_thua = 1;
+    function tinh_giai_thua(a) {
+        if (a<=1) return 1;
+        for (let i = 2; i <= a; i++) {
+            giai_thua *= i
+        }
+        return giai_thua
+    }
+
+    let a = +prompt('nhap vao 1 so nguyen duong');
+    document.write(tinh_giai_thua(a))
+</script>
+</body>
+</html>
