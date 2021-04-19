@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan ly san pham</title>
+</head>
+<body>
+<div id="edit">
+    <p>Add product</p>
+    <input type="text" id="add">
+    <button type="button" onclick="addProduct()">Add</button>
+    <p>Display all products</p>
+</div>
+<table id="displayArea" border="1">
+
+</table>
+<script>
+    let listProduct = ['ip12', 'note 10', 's10', 'ip13', 'nokia 1280'];
+    displayAll()
+    function displayAll(){
+    let str = '<tr>\n' +
+        '<td>Product Name</td>' +
+        '<td></td>' +
+        '<td>' + listProduct.length + 'products</td>' +
+        '</tr>'
+    for (let i = 0; i < listProduct.length; i++) {
+        str += '<tr><td>' + listProduct[i] + '</td>' +
+            '<td><button onclick="showFromEdit(' + i + ')">Edit</button></td>' +
+            '<td><button onclick="deleteProduct(' + i + ')">Delete</button></td>'
+    }
+    document.getElementById('displayArea').innerHTML = str;
+    }
+    function addProduct() {
+        let productName = document.getElementById('add').value;
+        document.getElementById('add').value = '';
+        listProduct.push(productName);
+        console.log(listProduct);
+        displayAll();
+    }
+function deleteProduct(inDex){
+        listProduct.splice(inDex,1);
+        displayAll();
+}
+function showFromEdit(inDex){
+        let str = '';
+    str = '<input type="text" id="editProduct" value="' + listProduct[inDex] + '"><button onclick="saveProduct(' + inDex + ')">Save</button>';
+    document.getElementById('edit').innerHTML = str ;
+}
+function saveProduct(inDex){
+        listProduct[inDex] = document.getElementById('editProduct').value;
+        document.getElementById('edit').innerHTML = '';
+        displayAll()
+}
+</script>
+</body>
+</html>
